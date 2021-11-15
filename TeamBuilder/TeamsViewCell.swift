@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class TableViewCell: UITableViewCell {
+class TeamsViewCell: UITableViewCell {
     
     static let reuseId = "Cell"
     

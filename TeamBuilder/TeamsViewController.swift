@@ -6,37 +6,47 @@
 //
 
 import UIKit
+import CoreData
 
-class TableViewController: UITableViewController {
+class TeamsViewController: UITableViewController {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var names = [Team]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        fetchPeople()
+    }
     
+    func fetchPeople() {
+        do  {
+            self.names = try context.fetch(Team.fetchRequest())
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        catch {
+            
+        }
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return names.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseId, for: indexPath) as! TableViewCell
-        cell.teamName.text = "Team № \(indexPath.row + 1)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: TeamsViewCell.reuseId, for: indexPath) as! TeamsViewCell
+        let teamName = names[indexPath.row]
+        cell.teamName.text = teamName.name
         return cell
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     func setupTableView() {
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.reuseId)
+        tableView.register(TeamsViewCell.self, forCellReuseIdentifier: TeamsViewCell.reuseId)
         tableView.separatorStyle = .none
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Teams list"
         tableView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.init(systemName: "plus"),
@@ -46,7 +56,7 @@ class TableViewController: UITableViewController {
     }
     
     @objc func addTeam(){
-        print("new team")
+        navigationController?.pushViewController(AddTeamViewController(), animated: true)
     }
 }
 

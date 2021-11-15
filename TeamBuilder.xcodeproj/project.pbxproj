@@ -13,9 +13,12 @@
 		B8989C7227410D2B00BDE2D0 /* TeamBuilder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8989C7027410D2B00BDE2D0 /* TeamBuilder.xcdatamodeld */; };
 		B8989C7427410D2D00BDE2D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8989C7327410D2D00BDE2D0 /* Assets.xcassets */; };
 		B8989C7727410D2D00BDE2D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8989C7527410D2D00BDE2D0 /* LaunchScreen.storyboard */; };
-		B8989C7F2741107200BDE2D0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8989C7E2741107200BDE2D0 /* TableViewController.swift */; };
-		B8989C81274110DA00BDE2D0 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8989C80274110DA00BDE2D0 /* TableViewCell.swift */; };
+		B8989C7F2741107200BDE2D0 /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8989C7E2741107200BDE2D0 /* TeamsViewController.swift */; };
+		B8989C81274110DA00BDE2D0 /* TeamsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8989C80274110DA00BDE2D0 /* TeamsViewCell.swift */; };
 		B8989C8327411C5000BDE2D0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8989C8227411C5000BDE2D0 /* Constants.swift */; };
+		B8989C852742A1EE00BDE2D0 /* AddTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8989C842742A1EE00BDE2D0 /* AddTeamViewController.swift */; };
+		B8989C992742B0F600BDE2D0 /* Team+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8989C972742B0F600BDE2D0 /* Team+CoreDataClass.swift */; };
+		B8989C9A2742B0F600BDE2D0 /* Team+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8989C982742B0F600BDE2D0 /* Team+CoreDataProperties.swift */; };
 		BA87AFB4BF7D4E6E096A0E90 /* Pods_TeamBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80123ECE2C60B7A27472D051 /* Pods_TeamBuilder.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,9 +34,12 @@
 		B8989C7327410D2D00BDE2D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8989C7627410D2D00BDE2D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8989C7827410D2D00BDE2D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B8989C7E2741107200BDE2D0 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		B8989C80274110DA00BDE2D0 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		B8989C7E2741107200BDE2D0 /* TeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
+		B8989C80274110DA00BDE2D0 /* TeamsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewCell.swift; sourceTree = "<group>"; };
 		B8989C8227411C5000BDE2D0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B8989C842742A1EE00BDE2D0 /* AddTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTeamViewController.swift; sourceTree = "<group>"; };
+		B8989C972742B0F600BDE2D0 /* Team+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B8989C982742B0F600BDE2D0 /* Team+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,11 +92,13 @@
 		B8989C6627410D2B00BDE2D0 /* TeamBuilder */ = {
 			isa = PBXGroup;
 			children = (
+				B8989C9B2742B0FD00BDE2D0 /* CoreData Models */,
 				B8989C6727410D2B00BDE2D0 /* AppDelegate.swift */,
 				B8989C6927410D2B00BDE2D0 /* SceneDelegate.swift */,
 				B8989C6D27410D2B00BDE2D0 /* Main.storyboard */,
-				B8989C7E2741107200BDE2D0 /* TableViewController.swift */,
-				B8989C80274110DA00BDE2D0 /* TableViewCell.swift */,
+				B8989C7E2741107200BDE2D0 /* TeamsViewController.swift */,
+				B8989C842742A1EE00BDE2D0 /* AddTeamViewController.swift */,
+				B8989C80274110DA00BDE2D0 /* TeamsViewCell.swift */,
 				B8989C8227411C5000BDE2D0 /* Constants.swift */,
 				B8989C7327410D2D00BDE2D0 /* Assets.xcassets */,
 				B8989C7527410D2D00BDE2D0 /* LaunchScreen.storyboard */,
@@ -98,6 +106,15 @@
 				B8989C7027410D2B00BDE2D0 /* TeamBuilder.xcdatamodeld */,
 			);
 			path = TeamBuilder;
+			sourceTree = "<group>";
+		};
+		B8989C9B2742B0FD00BDE2D0 /* CoreData Models */ = {
+			isa = PBXGroup;
+			children = (
+				B8989C972742B0F600BDE2D0 /* Team+CoreDataClass.swift */,
+				B8989C982742B0F600BDE2D0 /* Team+CoreDataProperties.swift */,
+			);
+			path = "CoreData Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,11 +232,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8989C81274110DA00BDE2D0 /* TableViewCell.swift in Sources */,
+				B8989C81274110DA00BDE2D0 /* TeamsViewCell.swift in Sources */,
 				B8989C6827410D2B00BDE2D0 /* AppDelegate.swift in Sources */,
+				B8989C852742A1EE00BDE2D0 /* AddTeamViewController.swift in Sources */,
+				B8989C9A2742B0F600BDE2D0 /* Team+CoreDataProperties.swift in Sources */,
 				B8989C7227410D2B00BDE2D0 /* TeamBuilder.xcdatamodeld in Sources */,
 				B8989C6A27410D2B00BDE2D0 /* SceneDelegate.swift in Sources */,
-				B8989C7F2741107200BDE2D0 /* TableViewController.swift in Sources */,
+				B8989C7F2741107200BDE2D0 /* TeamsViewController.swift in Sources */,
+				B8989C992742B0F600BDE2D0 /* Team+CoreDataClass.swift in Sources */,
 				B8989C8327411C5000BDE2D0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
