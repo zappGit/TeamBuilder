@@ -13,21 +13,7 @@ import CoreData
 class AddTeamViewController: UIViewController {
     
     let tableView = UITableView()
-    let text1: UITextField = {
-        let text = UITextField()
-        text.backgroundColor = .systemBlue
-        text.font = UIFont.systemFont(ofSize: 15)
-        text.textColor = .black
-        text.placeholder = "Enter Team name"
-        return text
-    }()
-    let button: UIButton = {
-       let button = UIButton()
-        button.backgroundColor = .green
-        button.setTitleColor(.black, for: .normal)
-        button.setTitle("Save", for: .normal)
-        return button
-    }()
+    
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var item: [Team]?
@@ -35,28 +21,11 @@ class AddTeamViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(text1)
-        view.addSubview(button)
-        //        view.addSubview(tableView)
-        //        tableView.delegate = self
-        //        tableView.dataSource = self
-        view.backgroundColor = .red
-        
-        
-        button.addTarget(self, action: #selector(teamName), for: .touchUpInside)
-        
-        //snp
-        //        tableView.snp.makeConstraints { make in
-        //            make.edges.equalTo(view)
-        text1.snp.makeConstraints { make in
-            make.centerX.equalTo(view)
-            make.centerY.equalTo(view)
-        }
-        button.snp.makeConstraints { make in
-            make.top.equalTo(text1.snp.bottom).inset(-10)
-            make.size.equalTo(CGSize(width: 100, height: 30))
-            make.centerX.equalTo(view)
-        }
+        tableView.dataSource = self
+        tableView.delegate = self
+        view.backgroundColor = #colorLiteral(red: 0.7471456528, green: 0.7610895038, blue: 0.936039567, alpha: 1)
+        fetchData()
+        setupUI()
     }
     
     func fetchData() {
@@ -64,35 +33,88 @@ class AddTeamViewController: UIViewController {
             self.item = try context.fetch(Team.fetchRequest())
         }
         catch {
-            
+
         }
     }
     
-    @objc func teamName() {
-        let teamName = text1.text
-        let newTeamName = Team(context: self.context)
-        newTeamName.name = teamName
-        do {
-            try self.context.save()
-            print("save")
+    func createButton(title: String, backgroundColor: UIColor, textColor: UIColor) -> UIButton {
+        let button = UIButton()
+        button.backgroundColor = backgroundColor
+        button.setTitle("\(title)", for: .normal)
+        button.layer.cornerRadius = 10
+        button.setTitleColor(textColor, for: .normal)
+        view.addSubview(button)
+        return button
+    }
+
+    func setupUI() {
+        view.addSubview(tableView)
+        navigationItem.largeTitleDisplayMode = .never
+        tableView.register(AddTeamMemberCell.self, forCellReuseIdentifier: AddTeamMemberCell.reuseId)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        
+        let addButton = createButton(title: "Add", backgroundColor: .green, textColor: .black)
+        let saveButton = createButton(title: "Save", backgroundColor: .blue, textColor: .white)
+        let returnButton = createButton(title: "Return", backgroundColor: .red, textColor: .white)
+        returnButton.addTarget(self, action: #selector(closeVc), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(addMemberToTheTeam), for: .touchUpInside)
+        // snp
+        tableView.snp.makeConstraints { make in
+            make.top.left.right.equalTo(view)
+            make.bottom.equalTo(addButton.snp.top).inset(-10)
         }
-        catch {
-            
+        
+        addButton.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+            make.bottom.equalTo(view).inset(25)
+            make.size.equalTo(CGSize(width: 100, height: 50))
         }
-        self.fetchData()
+        saveButton.snp.makeConstraints { make in
+            //make.centerX.equalTo(view)
+            make.left.equalTo(addButton.snp.right).inset(-25)
+            make.bottom.equalTo(view).inset(25)
+            make.size.equalTo(CGSize(width: 100, height: 50))
+        }
+        returnButton.snp.makeConstraints { make in
+            //make.centerX.equalTo(view)
+            make.right.equalTo(addButton.snp.left).inset(-25)
+            make.bottom.equalTo(view).inset(25)
+            make.size.equalTo(CGSize(width: 100, height: 50))
+        }
+    }
+    @objc func addMemberToTheTeam() {
+        navigationController?.pushViewController(AddTeamMemberViewController(), animated: true)
+    }
+    @objc func closeVc(){
         navigationController?.popViewController(animated: true)
     }
+//    @objc func teamName() {
+//        let teamName = text1.text
+//        let newTeamName = Team(context: self.context)
+//        newTeamName.name = teamName
+//        do {
+//            try self.context.save()
+//            print("save")
+//        }
+//        catch {
+//
+//        }
+//        self.fetchData()
+//        navigationController?.popViewController(animated: true)
+//    }
 }
 
 
 
-//extension AddTeamViewController: UITableViewDelegate, UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
-//}
+extension AddTeamViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: AddTeamMemberCell.reuseId, for: indexPath) as! AddTeamMemberCell
+        return cell
+    }
+}

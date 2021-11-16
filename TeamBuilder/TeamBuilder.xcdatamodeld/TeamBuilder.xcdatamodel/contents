@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Member" representedClassName="Member" syncable="YES">
+        <attribute name="leftItem" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="phrase" optional="YES" attributeType="String"/>
+        <attribute name="rightItem" optional="YES" attributeType="String"/>
+        <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="members" inverseEntity="Team"/>
+    </entity>
     <entity name="Team" representedClassName="Team" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Member" inverseName="team" inverseEntity="Member"/>
     </entity>
     <elements>
-        <element name="Team" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="Member" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="Team" positionX="-63" positionY="9" width="128" height="59"/>
     </elements>
 </model>

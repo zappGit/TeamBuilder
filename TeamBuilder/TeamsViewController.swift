@@ -56,6 +56,10 @@ class TeamsViewController: UITableViewController {
     }
     
     @objc func addTeam(){
+//        let rootVc = AddTeamViewController()
+//        let navVc = UINavigationController(rootViewController: rootVc)
+//        navVc.modalPresentationStyle = .fullScreen
+//        present(navVc, animated: true, completion: nil)
         navigationController?.pushViewController(AddTeamViewController(), animated: true)
     }
 }
