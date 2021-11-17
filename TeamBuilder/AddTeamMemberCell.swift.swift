@@ -20,7 +20,6 @@ class AddTeamMemberCell: UITableViewCell {
         
         backgroundColor = .clear
         selectionStyle = .none
-        
         uiConfiguration()
     }
         
@@ -37,7 +36,7 @@ class AddTeamMemberCell: UITableViewCell {
         return view
     }()
     
-    let memberName: UILabel = {
+    var memberName: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.backgroundColor = .blue
@@ -49,7 +48,7 @@ class AddTeamMemberCell: UITableViewCell {
         return label
     }()
     
-    let memberPhrase: UILabel = {
+    var memberPhrase: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.backgroundColor = .blue
@@ -61,7 +60,7 @@ class AddTeamMemberCell: UITableViewCell {
         return label
     }()
     
-    let memberItemLeft: UILabel = {
+    var memberItemLeft: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.backgroundColor = .blue
@@ -72,7 +71,7 @@ class AddTeamMemberCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    let memberItemRight: UILabel = {
+    var memberItemRight: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.backgroundColor = .blue

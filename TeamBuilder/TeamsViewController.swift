@@ -10,7 +10,7 @@ import CoreData
 
 class TeamsViewController: UITableViewController {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+   // let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var names = [Team]()
     
     override func viewDidLoad() {
@@ -18,28 +18,29 @@ class TeamsViewController: UITableViewController {
         setupTableView()
     }
     override func viewWillAppear(_ animated: Bool) {
-        fetchPeople()
+       // fetchPeople()
     }
     
-    func fetchPeople() {
-        do  {
-            self.names = try context.fetch(Team.fetchRequest())
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-        catch {
-            
-        }
-    }
+//    func fetchPeople() {
+//        do  {
+//            self.names = try context.fetch(Team.fetchRequest())
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//        }
+//        catch {
+//
+//        }
+// }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        //return names.count
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TeamsViewCell.reuseId, for: indexPath) as! TeamsViewCell
-        let teamName = names[indexPath.row]
-        cell.teamName.text = teamName.name
+//        let teamName = names[indexPath.row]
+//        cell.teamName.text = teamName.name
         return cell
     }
     
