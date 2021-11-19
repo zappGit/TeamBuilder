@@ -10,37 +10,27 @@ import CoreData
 
 class TeamsViewController: UITableViewController {
     
-   // let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var names = [Team]()
-    
+    // let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var teams = [Team]()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        teams = CoreDataManager.shared.getAllTeams()
+        tableView.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
-       // fetchPeople()
+        teams = CoreDataManager.shared.getAllTeams()
+        tableView.reloadData()
     }
     
-//    func fetchPeople() {
-//        do  {
-//            self.names = try context.fetch(Team.fetchRequest())
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        }
-//        catch {
-//
-//        }
-// }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return names.count
-        return 5
+        return teams.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TeamsViewCell.reuseId, for: indexPath) as! TeamsViewCell
-//        let teamName = names[indexPath.row]
-//        cell.teamName.text = teamName.name
+        let teamName = teams[indexPath.row]
+        cell.teamName.text = teamName.name
         return cell
     }
     
@@ -48,7 +38,7 @@ class TeamsViewController: UITableViewController {
         tableView.register(TeamsViewCell.self, forCellReuseIdentifier: TeamsViewCell.reuseId)
         tableView.separatorStyle = .none
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Teams list"
+        navigationItem.title = "Список команд"
         tableView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.init(systemName: "plus"),
                                                             style: .plain,
@@ -56,11 +46,16 @@ class TeamsViewController: UITableViewController {
                                                             action: #selector(addTeam))
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let team = teams[indexPath.row]
+        let vc = AddTeamViewController()
+        vc.teams = team
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     @objc func addTeam(){
-//        let rootVc = AddTeamViewController()
-//        let navVc = UINavigationController(rootViewController: rootVc)
-//        navVc.modalPresentationStyle = .fullScreen
-//        present(navVc, animated: true, completion: nil)
         navigationController?.pushViewController(AddTeamViewController(), animated: true)
     }
 }

@@ -15,16 +15,23 @@ class AddTeamViewController: UIViewController {
     
     let tableView = UITableView()
     var teams: Team?
+    var members: [Member] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.setHidesBackButton(true, animated: true)
         tableView.dataSource = self
         tableView.delegate = self
         view.backgroundColor = #colorLiteral(red: 0.7471456528, green: 0.7610895038, blue: 0.936039567, alpha: 1)
         setupUI()
+        navigationItem.title = teams?.name
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if let allMembers = teams?.members?.allObjects as? [Member] {
+            members = allMembers
+        }
+        navigationItem.title = teams?.name
         tableView.reloadData()
     }
     func createButton(title: String, backgroundColor: UIColor, textColor: UIColor) -> UIButton {
@@ -39,6 +46,7 @@ class AddTeamViewController: UIViewController {
     
     func setupUI() {
         view.addSubview(tableView)
+        
         navigationItem.largeTitleDisplayMode = .never
         tableView.register(AddTeamMemberCell.self, forCellReuseIdentifier: AddTeamMemberCell.reuseId)
         tableView.separatorStyle = .none
@@ -73,6 +81,7 @@ class AddTeamViewController: UIViewController {
             make.bottom.equalTo(view).inset(25)
             make.size.equalTo(CGSize(width: 100, height: 50))
         }
+        tableView.reloadData()
     }
     func errorAlert(message: String) {
         let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
@@ -103,20 +112,24 @@ class AddTeamViewController: UIViewController {
         
     }
     
+    func pathDataToVc() {
+        let vc = AddTeamMemberViewController()
+        let throwTeam = self.teams
+        vc.team = throwTeam
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @objc func addMemberToTheTeam() {
         if teams == nil {
             teamAlert { text in
                 self.teams = CoreDataManager.shared.team(name: text)
                 CoreDataManager.shared.save()
-                self.tableView.reloadData()
-                let vc = AddTeamMemberViewController()
-                let throwTeam = self.teams
-                vc.team = throwTeam
-                self.navigationController?.pushViewController(vc, animated: true)
+                //self.tableView.reloadData()
+                self.pathDataToVc()
             }
             
         } else {
-            navigationController?.pushViewController(AddTeamMemberViewController(), animated: true)
+            pathDataToVc()
         }
         
     }
@@ -124,45 +137,32 @@ class AddTeamViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     @objc func saveTeam() {
-        errorAlert(message: "sda")
+        tableView.reloadData()
     }
 }
 
 extension AddTeamViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return members.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AddTeamMemberCell.reuseId, for: indexPath) as! AddTeamMemberCell
-        guard let teams = teams else { return cell }
-        cell.memberName.text = teams.name
+        let member = members[indexPath.row]
+        cell.memberName.text = member.name
+        cell.memberPhrase.text = member.phrase
+        cell.memberItemLeft.text = member.leftItem
+        cell.memberItemRight.text = member.rightItem
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let member = members[indexPath.row]
+        let vc = AddTeamMemberViewController()
+        vc.team = teams
+        vc.member = member
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-//    @objc func teamName() {
-//        let teamName = text1.text
-//        let newTeamName = Team(context: self.context)
-//        newTeamName.name = teamName
-//        do {
-//            try self.context.save()
-//            print("save")
-//        }
-//        catch {
-//
-//        }
-//        self.fetchData()
-//        navigationController?.popViewController(animated: true)
-//    }

@@ -10,6 +10,7 @@ import CoreData
 
 class CoreDataManager {
     static let shared = CoreDataManager()
+    private init () {}
     
 var persistentContainer: NSPersistentContainer = {
     
@@ -28,7 +29,29 @@ var persistentContainer: NSPersistentContainer = {
         return team
         
     }
-    
+    //создаем члена команды
+    func teamMember(name: String, phrase: String, leftItem: String, rightItem: String, team: Team) -> Member {
+        let member = Member(context: persistentContainer.viewContext)
+        member.name = name
+        member.phrase = phrase
+        member.leftItem = leftItem
+        member.rightItem = rightItem
+        member.team = team
+        return member
+    }
+    //функция для получения всех команд
+   func getAllTeams() -> [Team] {
+        let request: NSFetchRequest<Team> = Team.fetchRequest()
+        
+        var fechedTeams: [Team] = []
+       
+        do {
+            fechedTeams = try persistentContainer.viewContext.fetch(request)
+        } catch {
+            print("Error")
+        }
+        return fechedTeams
+    }
 // MARK: - Core Data Saving support
 
 func save () {

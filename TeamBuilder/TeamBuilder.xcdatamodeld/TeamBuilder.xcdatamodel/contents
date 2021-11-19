@@ -12,7 +12,7 @@
         <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Member" inverseName="team" inverseEntity="Member"/>
     </entity>
     <elements>
-        <element name="Member" positionX="-63" positionY="-18" width="128" height="104"/>
-        <element name="Team" positionX="-63" positionY="9" width="128" height="59"/>
+        <element name="Member" positionX="-127.328125" positionY="-116.84375" width="128" height="118"/>
+        <element name="Team" positionX="-184.18359375" positionY="-361.046875" width="128" height="73"/>
     </elements>
 </model>

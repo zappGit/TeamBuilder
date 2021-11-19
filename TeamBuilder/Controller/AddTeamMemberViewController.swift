@@ -14,15 +14,23 @@ import SnapKit
 class AddTeamMemberViewController: UIViewController {
     
     var team: Team?
+    var member: Member?
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .darkGray
         uiConfiguration()
-        kkk()
+        teamLabel()
+        updateTextFielsds()
         
     }
-   
-    func kkk() {
+    func updateTextFielsds() {
+        guard let member = member else { return }
+        text1.text = member.name
+        text2.text = member.phrase
+        text3.text = member.leftItem
+        text4.text = member.rightItem
+    }
+    func teamLabel() {
         guard let team = team else {
             return
         }
@@ -85,8 +93,6 @@ class AddTeamMemberViewController: UIViewController {
         view.addSubview(button)
         view.addSubview(label)
         
-        
-        
         label.snp.makeConstraints { make in
             make.bottom.equalTo(view).inset(50)
             make.centerX.equalTo(view)
@@ -118,23 +124,33 @@ class AddTeamMemberViewController: UIViewController {
             make.centerX.equalTo(view)
         }
         
-        button.addTarget(self, action: #selector(teamName), for: .touchUpInside)
+        button.addTarget(self, action: #selector(saveTeamMember), for: .touchUpInside)
     }
-        @objc func teamName() {
+        @objc func saveTeamMember() {
+            if member == nil {
+            guard let name = text1.text else { return }
+            guard let phrase = text2.text else { return }
+            guard let leftItem = text3.text else { return }
+            guard let rightItem = text4.text else { return }
+            guard let team = team else { return }
             
-//            let member = Team(context: self.context)
-//            member.name = text1.text
-//            member.phrase = text2.text
-//            member.leftItem = text3.text
-//            member.rightItem = text4.text
-//            do {
-//                try self.context.save()
-//                print("save")
-//            }
-//            catch {
-//
-//            }
-//            navigationController?.popViewController(animated: true)
+            _ = CoreDataManager.shared.teamMember(name: name,
+                                                           phrase: phrase,
+                                                           leftItem: leftItem,
+                                                           rightItem: rightItem,
+                                                           team: team)
+            CoreDataManager.shared.save()
+            navigationController?.popViewController(animated: true)
+            } else {
+                member?.name = text1.text
+                member?.phrase = text2.text
+                member?.leftItem = text3.text
+                member?.rightItem = text4.text
+                
+                CoreDataManager.shared.save()
+                navigationController?.popViewController(animated: true)
+            }
+            
         }
         
     }

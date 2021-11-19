@@ -16,7 +16,6 @@ class TeamsViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = .clear
-        selectionStyle = .none
         
         //Инициалицируем команду
         for i in 0 ... Constants.teamCapasity - 1 {
