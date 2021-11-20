@@ -43,9 +43,7 @@ var persistentContainer: NSPersistentContainer = {
     //функция для получения всех команд
    func getAllTeams() -> [Team] {
         let request: NSFetchRequest<Team> = Team.fetchRequest()
-        
         var fechedTeams: [Team] = []
-       
         do {
             fechedTeams = try persistentContainer.viewContext.fetch(request)
         } catch {

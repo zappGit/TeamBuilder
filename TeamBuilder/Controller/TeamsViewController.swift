@@ -30,7 +30,13 @@ class TeamsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TeamsViewCell.reuseId, for: indexPath) as! TeamsViewCell
         let teamName = teams[indexPath.row]
+        let members = teamName.members?.allObjects as! [Member]
         cell.teamName.text = teamName.name
+        for (id, member) in members.enumerated() {
+            if let image = member.avatar {
+                cell.imageViewsArray[id].image = UIImage(data: image)
+            }
+        }
         return cell
     }
     

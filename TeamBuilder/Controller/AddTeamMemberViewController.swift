@@ -173,8 +173,6 @@ class AddTeamMemberViewController: UIViewController {
                 self?.avatar.set(imgUrl: data.avatar)
             }
         }
-        
-        
     }
     @objc func saveTeamMember() {
         if member == nil {
@@ -203,9 +201,7 @@ class AddTeamMemberViewController: UIViewController {
             CoreDataManager.shared.save()
             navigationController?.popViewController(animated: true)
         }
-        
     }
-    
 }
 
 
