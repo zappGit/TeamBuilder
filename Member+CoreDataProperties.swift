@@ -2,7 +2,7 @@
 //  Member+CoreDataProperties.swift
 //  TeamBuilder
 //
-//  Created by Артем Хребтов on 16.11.2021.
+//  Created by Артем Хребтов on 20.11.2021.
 //
 //
 
@@ -16,10 +16,11 @@ extension Member {
         return NSFetchRequest<Member>(entityName: "Member")
     }
 
+    @NSManaged public var leftItem: String?
     @NSManaged public var name: String?
     @NSManaged public var phrase: String?
-    @NSManaged public var leftItem: String?
     @NSManaged public var rightItem: String?
+    @NSManaged public var avatar: Data?
     @NSManaged public var team: Team?
 
 }

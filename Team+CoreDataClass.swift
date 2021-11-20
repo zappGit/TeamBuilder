@@ -2,7 +2,7 @@
 //  Team+CoreDataClass.swift
 //  TeamBuilder
 //
-//  Created by Артем Хребтов on 16.11.2021.
+//  Created by Артем Хребтов on 20.11.2021.
 //
 //
 

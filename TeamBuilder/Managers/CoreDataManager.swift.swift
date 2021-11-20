@@ -30,13 +30,14 @@ var persistentContainer: NSPersistentContainer = {
         
     }
     //создаем члена команды
-    func teamMember(name: String, phrase: String, leftItem: String, rightItem: String, team: Team) -> Member {
+    func teamMember(name: String, phrase: String, leftItem: String, rightItem: String, team: Team, avatar: Data) -> Member {
         let member = Member(context: persistentContainer.viewContext)
         member.name = name
         member.phrase = phrase
         member.leftItem = leftItem
         member.rightItem = rightItem
         member.team = team
+        member.avatar = avatar
         return member
     }
     //функция для получения всех команд

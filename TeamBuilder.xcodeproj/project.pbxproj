@@ -10,11 +10,14 @@
 		B8898DEB2743E8C200F9F4B0 /* AddTeamMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8898DEA2743E8C100F9F4B0 /* AddTeamMemberViewController.swift */; };
 		B8898DED2743F28700F9F4B0 /* AddTeamMemberCell.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8898DEC2743F28700F9F4B0 /* AddTeamMemberCell.swift.swift */; };
 		B8898DEF2743F48C00F9F4B0 /* MemberStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8898DEE2743F48C00F9F4B0 /* MemberStruct.swift */; };
-		B8898E002744360D00F9F4B0 /* Member+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8898DFC2744360D00F9F4B0 /* Member+CoreDataClass.swift */; };
-		B8898E012744360D00F9F4B0 /* Member+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8898DFD2744360D00F9F4B0 /* Member+CoreDataProperties.swift */; };
-		B8898E022744360D00F9F4B0 /* Team+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8898DFE2744360D00F9F4B0 /* Team+CoreDataClass.swift */; };
-		B8898E032744360D00F9F4B0 /* Team+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8898DFF2744360D00F9F4B0 /* Team+CoreDataProperties.swift */; };
 		B8898E0527453F7000F9F4B0 /* CoreDataManager.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8898E0427453F7000F9F4B0 /* CoreDataManager.swift.swift */; };
+		B8898E0C2748D9E400F9F4B0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8898E0B2748D9E400F9F4B0 /* NetworkManager.swift */; };
+		B8898E0E2748DD2F00F9F4B0 /* RandomAPI.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8898E0D2748DD2F00F9F4B0 /* RandomAPI.swift.swift */; };
+		B8898E102748F52B00F9F4B0 /* AvatarImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8898E0F2748F52B00F9F4B0 /* AvatarImage.swift */; };
+		B8898E1D2748FB3D00F9F4B0 /* Member+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8898E192748FB3D00F9F4B0 /* Member+CoreDataClass.swift */; };
+		B8898E1E2748FB3D00F9F4B0 /* Member+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8898E1A2748FB3D00F9F4B0 /* Member+CoreDataProperties.swift */; };
+		B8898E1F2748FB3D00F9F4B0 /* Team+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8898E1B2748FB3D00F9F4B0 /* Team+CoreDataClass.swift */; };
+		B8898E202748FB3D00F9F4B0 /* Team+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8898E1C2748FB3D00F9F4B0 /* Team+CoreDataProperties.swift */; };
 		B8989C6827410D2B00BDE2D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8989C6727410D2B00BDE2D0 /* AppDelegate.swift */; };
 		B8989C6A27410D2B00BDE2D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8989C6927410D2B00BDE2D0 /* SceneDelegate.swift */; };
 		B8989C6F27410D2B00BDE2D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8989C6D27410D2B00BDE2D0 /* Main.storyboard */; };
@@ -35,11 +38,14 @@
 		B8898DEA2743E8C100F9F4B0 /* AddTeamMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTeamMemberViewController.swift; sourceTree = "<group>"; };
 		B8898DEC2743F28700F9F4B0 /* AddTeamMemberCell.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTeamMemberCell.swift.swift; sourceTree = "<group>"; };
 		B8898DEE2743F48C00F9F4B0 /* MemberStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberStruct.swift; sourceTree = "<group>"; };
-		B8898DFC2744360D00F9F4B0 /* Member+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Member+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		B8898DFD2744360D00F9F4B0 /* Member+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Member+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		B8898DFE2744360D00F9F4B0 /* Team+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		B8898DFF2744360D00F9F4B0 /* Team+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		B8898E0427453F7000F9F4B0 /* CoreDataManager.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift.swift; sourceTree = "<group>"; };
+		B8898E0B2748D9E400F9F4B0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B8898E0D2748DD2F00F9F4B0 /* RandomAPI.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAPI.swift.swift; sourceTree = "<group>"; };
+		B8898E0F2748F52B00F9F4B0 /* AvatarImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImage.swift; sourceTree = SOURCE_ROOT; };
+		B8898E192748FB3D00F9F4B0 /* Member+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Member+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		B8898E1A2748FB3D00F9F4B0 /* Member+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Member+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		B8898E1B2748FB3D00F9F4B0 /* Team+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		B8898E1C2748FB3D00F9F4B0 /* Team+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		B8989C6427410D2B00BDE2D0 /* TeamBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8989C6727410D2B00BDE2D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8989C6927410D2B00BDE2D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +108,17 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		B8898E0A2748D9CE00F9F4B0 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				B8898E0F2748F52B00F9F4B0 /* AvatarImage.swift */,
+				B8898E0427453F7000F9F4B0 /* CoreDataManager.swift.swift */,
+				B8898E0B2748D9E400F9F4B0 /* NetworkManager.swift */,
+				B8898E0D2748DD2F00F9F4B0 /* RandomAPI.swift.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		B8989C5B27410D2B00BDE2D0 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +143,7 @@
 				B8989C6727410D2B00BDE2D0 /* AppDelegate.swift */,
 				B8989C6927410D2B00BDE2D0 /* SceneDelegate.swift */,
 				B8989C6D27410D2B00BDE2D0 /* Main.storyboard */,
+				B8898E0A2748D9CE00F9F4B0 /* Managers */,
 				B8989C9B2742B0FD00BDE2D0 /* CoreData Models */,
 				B8898E0627480D8400F9F4B0 /* Controller */,
 				B8898E0727480DAE00F9F4B0 /* Cell */,
@@ -142,11 +160,10 @@
 		B8989C9B2742B0FD00BDE2D0 /* CoreData Models */ = {
 			isa = PBXGroup;
 			children = (
-				B8898E0427453F7000F9F4B0 /* CoreDataManager.swift.swift */,
-				B8898DFC2744360D00F9F4B0 /* Member+CoreDataClass.swift */,
-				B8898DFD2744360D00F9F4B0 /* Member+CoreDataProperties.swift */,
-				B8898DFE2744360D00F9F4B0 /* Team+CoreDataClass.swift */,
-				B8898DFF2744360D00F9F4B0 /* Team+CoreDataProperties.swift */,
+				B8898E192748FB3D00F9F4B0 /* Member+CoreDataClass.swift */,
+				B8898E1A2748FB3D00F9F4B0 /* Member+CoreDataProperties.swift */,
+				B8898E1B2748FB3D00F9F4B0 /* Team+CoreDataClass.swift */,
+				B8898E1C2748FB3D00F9F4B0 /* Team+CoreDataProperties.swift */,
 			);
 			path = "CoreData Models";
 			sourceTree = "<group>";
@@ -268,17 +285,20 @@
 			files = (
 				B8989C81274110DA00BDE2D0 /* TeamsViewCell.swift in Sources */,
 				B8898DEF2743F48C00F9F4B0 /* MemberStruct.swift in Sources */,
-				B8898E002744360D00F9F4B0 /* Member+CoreDataClass.swift in Sources */,
 				B8989C6827410D2B00BDE2D0 /* AppDelegate.swift in Sources */,
+				B8898E102748F52B00F9F4B0 /* AvatarImage.swift in Sources */,
+				B8898E1F2748FB3D00F9F4B0 /* Team+CoreDataClass.swift in Sources */,
+				B8898E0C2748D9E400F9F4B0 /* NetworkManager.swift in Sources */,
 				B8989C852742A1EE00BDE2D0 /* AddTeamViewController.swift in Sources */,
 				B8989C7227410D2B00BDE2D0 /* TeamBuilder.xcdatamodeld in Sources */,
-				B8898E022744360D00F9F4B0 /* Team+CoreDataClass.swift in Sources */,
 				B8898DED2743F28700F9F4B0 /* AddTeamMemberCell.swift.swift in Sources */,
 				B8989C6A27410D2B00BDE2D0 /* SceneDelegate.swift in Sources */,
+				B8898E1D2748FB3D00F9F4B0 /* Member+CoreDataClass.swift in Sources */,
 				B8898E0527453F7000F9F4B0 /* CoreDataManager.swift.swift in Sources */,
+				B8898E202748FB3D00F9F4B0 /* Team+CoreDataProperties.swift in Sources */,
+				B8898E0E2748DD2F00F9F4B0 /* RandomAPI.swift.swift in Sources */,
 				B8989C7F2741107200BDE2D0 /* TeamsViewController.swift in Sources */,
-				B8898E032744360D00F9F4B0 /* Team+CoreDataProperties.swift in Sources */,
-				B8898E012744360D00F9F4B0 /* Member+CoreDataProperties.swift in Sources */,
+				B8898E1E2748FB3D00F9F4B0 /* Member+CoreDataProperties.swift in Sources */,
 				B8898DEB2743E8C200F9F4B0 /* AddTeamMemberViewController.swift in Sources */,
 				B8989C8327411C5000BDE2D0 /* Constants.swift in Sources */,
 			);

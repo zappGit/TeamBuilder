@@ -134,10 +134,15 @@ class AddTeamViewController: UIViewController {
         
     }
     @objc func closeVc(){
-        navigationController?.popViewController(animated: true)
+//        navigationController?.popViewController(animated: true)
     }
     @objc func saveTeam() {
-        tableView.reloadData()
+        let membersCount = members.count
+        if membersCount < 3 {
+            errorAlert(message: "Команда должна состоять минимум из 3х членов. Добавьте еще \(3 - membersCount) персонажа")
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
 }
 
