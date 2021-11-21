@@ -30,7 +30,7 @@ var persistentContainer: NSPersistentContainer = {
         
     }
     //создаем члена команды
-    func teamMember(name: String, phrase: String, leftItem: String, rightItem: String, team: Team, avatar: Data) -> Member {
+    func teamMember(name: String, phrase: String, leftItem: String, rightItem: String, team: Team, avatar: Data, leader: Bool) -> Member {
         let member = Member(context: persistentContainer.viewContext)
         member.name = name
         member.phrase = phrase
@@ -38,6 +38,7 @@ var persistentContainer: NSPersistentContainer = {
         member.rightItem = rightItem
         member.team = team
         member.avatar = avatar
+        member.leader = leader
         return member
     }
     //функция для получения всех команд
@@ -50,6 +51,26 @@ var persistentContainer: NSPersistentContainer = {
             print("Error")
         }
         return fechedTeams
+    }
+    
+    //Сортировка
+    func sorting(ascending: Bool) -> [Team] {
+        let request: NSFetchRequest<Team> = Team.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: ascending)]
+        var fechedTeams: [Team] = []
+        do {
+            fechedTeams = try persistentContainer.viewContext.fetch(request)
+        } catch {
+            print("Error")
+        }
+        return fechedTeams
+    }
+    
+    func deleteMember(member: Member) {
+        persistentContainer.viewContext.delete(member)
+    }
+    func deleteTeam(team: Team) {
+        persistentContainer.viewContext.delete(team)
     }
 // MARK: - Core Data Saving support
 

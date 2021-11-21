@@ -32,9 +32,12 @@ class NetworkManager {
         }
         let task = URLSession.shared.dataTask(with: urlString) { data, response, error in
             if let error = error {
+                print("123")
                 complition(nil, error)
             }
-            
+            if let response = response {
+                print(response)
+            }
             guard let data = data else {
                 complition(nil, Errors.BadData)
                 return
@@ -42,6 +45,7 @@ class NetworkManager {
             
             do {
                 let jsonResult = try JSONDecoder().decode(RandomMember.self, from: data)
+                print("get data")
                 complition(jsonResult, nil)
             } catch let error {
                 complition(nil, error)

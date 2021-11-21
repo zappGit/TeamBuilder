@@ -12,14 +12,14 @@ class TeamsViewController: UITableViewController {
     
     // let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var teams = [Team]()
+    var ascendingSorting = true
+    var sortImage = UIImage(systemName: "square.and.arrow.down.on.square.fill")
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        teams = CoreDataManager.shared.getAllTeams()
-        tableView.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
-        teams = CoreDataManager.shared.getAllTeams()
+        teams = CoreDataManager.shared.sorting(ascending: ascendingSorting)
         tableView.reloadData()
     }
     
@@ -30,13 +30,7 @@ class TeamsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TeamsViewCell.reuseId, for: indexPath) as! TeamsViewCell
         let teamName = teams[indexPath.row]
-        let members = teamName.members?.allObjects as! [Member]
-        cell.teamName.text = teamName.name
-        for (id, member) in members.enumerated() {
-            if let image = member.avatar {
-                cell.imageViewsArray[id].image = UIImage(data: image)
-            }
-        }
+        cell.team.text = teamName.name
         return cell
     }
     
@@ -45,24 +39,55 @@ class TeamsViewController: UITableViewController {
         tableView.separatorStyle = .none
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Список команд"
-        tableView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.init(systemName: "plus"),
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(addTeam))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: sortImage,
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(sort))
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let team = teams[indexPath.row]
         let vc = AddTeamViewController()
-        vc.teams = team
+        vc.team = team
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
+    @objc func sort(){
+        ascendingSorting.toggle()
+        if ascendingSorting {
+            navigationItem.leftBarButtonItem?.image = UIImage(systemName: "square.and.arrow.up.on.square.fill")
+        } else {
+            navigationItem.leftBarButtonItem?.image = UIImage(systemName: "square.and.arrow.down.on.square.fill")
+        }
+        sorting()
+    }
+    func sorting() {
+        teams = CoreDataManager.shared.sorting(ascending: ascendingSorting)
+        tableView.reloadData()
+    }
     @objc func addTeam(){
         navigationController?.pushViewController(AddTeamViewController(), animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let team = teams[indexPath.row]
+        let delete = UIContextualAction(style: .destructive, title: "Удалить") { _, _, _ in
+            self.teams.remove(at: indexPath.row)
+            CoreDataManager.shared.deleteTeam(team: team)
+            CoreDataManager.shared.save()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        let swipe = UISwipeActionsConfiguration(actions: [delete])
+        return swipe
     }
 }
 
