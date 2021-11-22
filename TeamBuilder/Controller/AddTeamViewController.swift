@@ -25,6 +25,7 @@ class AddTeamViewController: UIViewController {
         view.backgroundColor = .white
         setupUI()
     }
+    //получаем всех членов команды
     override func viewWillAppear(_ animated: Bool) {
         if let allMembers = team?.members?.allObjects as? [Member] {
             members = allMembers
@@ -36,7 +37,7 @@ class AddTeamViewController: UIViewController {
     }
     let addButton = UIButton()
     let saveButton = UIButton()
-    
+    //переименование команды
     @objc func rename() {
             teamAlert { text in
                 self.team?.name = text
@@ -113,6 +114,7 @@ class AddTeamViewController: UIViewController {
         vc.team = throwTeam
         navigationController?.pushViewController(vc, animated: true)
     }
+    //добавление члена команды
     @objc func addMemberToTheTeam() {
         if team == nil {
             teamAlert { text in
@@ -125,6 +127,7 @@ class AddTeamViewController: UIViewController {
             pathDataToVc()
         }
     }
+    //сохранение команды
     @objc func saveTeam() {
         let membersCount = members.count
         if membersCount < 3 {
@@ -153,7 +156,7 @@ extension AddTeamViewController: UITableViewDelegate, UITableViewDataSource {
         cell.leaderStar.image = member.leader ? UIImage(systemName: "star.fill") : nil
         return cell
     }
-    
+    //переход в редактирование
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let member = members[indexPath.row]
         let vc = AddTeamMemberViewController()
@@ -164,9 +167,13 @@ extension AddTeamViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+    //удаление
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let member = members[indexPath.row]
+        guard !member.leader else {
+            errorAlert(message: "Вы не можете удалить лидера")
+            return nil
+        }
         let delete = UIContextualAction(style: .destructive, title: "Удалить") { _, _, _ in
             self.members.remove(at: indexPath.row)
             CoreDataManager.shared.deleteMember(member: member)

@@ -9,8 +9,6 @@ import UIKit
 import CoreData
 
 class TeamsViewController: UITableViewController {
-    
-    // let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var teams = [Team]()
     var ascendingSorting = true
     var sortImage = UIImage(systemName: "square.and.arrow.down.on.square.fill")
@@ -57,6 +55,7 @@ class TeamsViewController: UITableViewController {
         vc.team = team
         navigationController?.pushViewController(vc, animated: true)
     }
+    //сортировка команд
     @objc func sort(){
         ascendingSorting.toggle()
         if ascendingSorting {
@@ -77,7 +76,7 @@ class TeamsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+    //удаление команды
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let team = teams[indexPath.row]
         let delete = UIContextualAction(style: .destructive, title: "Удалить") { _, _, _ in

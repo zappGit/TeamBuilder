@@ -33,6 +33,7 @@ class AddTeamMemberViewController: UIViewController, UIImagePickerControllerDele
         avatar.isUserInteractionEnabled = true
         avatar.addGestureRecognizer(tap)
     }
+    //добавление аватара через пикер
     @objc func didTapAvatar(){
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let photo = UIAlertAction(title: "Галерея", style: .default){ _ in

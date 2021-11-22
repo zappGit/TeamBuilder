@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-
 class AvatarImage: UIImageView {
     func set(imgUrl: String?){
         guard let imgUrl = imgUrl, let url = URL(string: imgUrl) else {
