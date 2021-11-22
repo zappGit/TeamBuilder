@@ -1,0 +1,6 @@
+framework module Pods_TeamBuilder {
+  umbrella header "Pods-TeamBuilder-umbrella.h"
+
+  export *
+  module * { export * }
+}

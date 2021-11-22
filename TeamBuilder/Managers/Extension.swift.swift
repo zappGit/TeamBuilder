@@ -63,7 +63,7 @@ extension UIViewController {
     @objc func dissmisKeyboard(){
         view.endEditing(true)
     }
-    
+    //алерт
     func errorAlert(message: String) {
         let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
         let ok = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
