@@ -8,6 +8,13 @@
 import UIKit
 import CoreData
 
+class NavigationViewController: UINavigationController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .orange
+    }
+}
+
 class TeamsViewController: UITableViewController {
     var teams = [Team]()
     var ascendingSorting = true
